@@ -1,9 +1,7 @@
 # Change Log
 
-All notable changes to the "file-header-annotations" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+对 “file-header-annotations” 扩展名的所有重要更改都将记录在此文件中。
 
 ## [Unreleased]
 
-- Initial release
+- 初始版本 On 2024-10-29
