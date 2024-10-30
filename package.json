@@ -3,6 +3,7 @@
   "displayName": "文件头部注释",
   "description": "给代码文件开头自动添加注释",
   "version": "0.0.1",
+  "repository": "https://github.com/CloudSwordSage/file-header-annotations",
   "engines": {
     "vscode": ">=1.90.0"
   },
@@ -14,12 +15,54 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "file-header-annotations.helloWorld",
-        "title": "Hello World"
+    "configuration": {
+      "type": "object",
+      "title": "File Header Annotations configuration",
+      "properties": {
+        "FileHeaderAnnotations.enable.time": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否在文件头部添加时间注释"
+        },
+        "FileHeaderAnnotations.enable.author": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否在文件头部添加作者注释"
+        },
+        "FileHeaderAnnotations.enable.file": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否在文件头部添加文件名注释"
+        },
+        "FileHeaderAnnotations.enable.description": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否在文件头部添加描述注释"
+        },
+        "FileHeaderAnnotations.author": {
+          "type": "string",
+          "default": "",
+          "description": "作者名称"
+        },
+        "FileHeaderAnnotations.enable.language": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "c",
+            "cpp",
+            "java",
+            "python",
+            "javascript",
+            "typescript",
+            "kotlin",
+            "css"
+          ],
+          "description": "需要添加注释的文件类型"
+        }
       }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
@@ -30,20 +73,22 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "build": "pnpm vsce package --no-dependencies"
   },
   "devDependencies": {
-    "@types/vscode": "^1.94.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
+    "@types/vscode": "^1.90.0",
     "@typescript-eslint/eslint-plugin": "^8.10.0",
     "@typescript-eslint/parser": "^8.7.0",
-    "eslint": "^9.13.0",
-    "typescript": "^5.6.3",
-    "ts-loader": "^9.5.1",
-    "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "^3.2.1",
+    "eslint": "^9.13.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   }
 }
