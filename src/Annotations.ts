@@ -1,22 +1,43 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 import * as fs from 'fs';
+import { promisify } from 'util';
+const { readFile, writeFile } = { readFile: promisify(fs.readFile), writeFile: promisify(fs.writeFile) };
 
 const commentFormats: { [key: string]: string[] } = {
-    'c': ['/* ', '*', '*/'],
-    'cpp': ['/* ', '*', '*/'],
+    'c': ['/*', '*', '*/'],
+    'cpp': ['/*', '*', '*/'],
     'java': ['/**', '*', '**/'],
     'javascript': ['/*', '*', '*/'],
     'typescript': ['/*', '*', '*/'],
-    'css': ['/* ', '*', '*/'],
+    'css': ['/*', '*', '*/'],
     'kotlin': ['/**', '*', '**/'],
     'python': ['# -*- coding: utf-8 -*-', '#', ''],
+    'ruby': ['=begin', '*', '=end'],
+    'php': ['/*', '*', '*/'],
+    'swift': ['/*', '*', '*/'],
+    'go': ['/*', '*', '*/'],
+    'rust': ['/*', '*', '*/'],
+    'objective-c': ['/*', '*', '*/'],
+    'scala': ['/*', '*', '*/'],
+    'shellscript': ['#', '#', ''],
+    'perl': ['=pod', '*', '=cut'],
+    'lua': ['--', '--', ''],
+    'haskell': ['{-', '*', '-}'],
+    'r': ['# -*- mode: R -*-', '#', ''],
+    'matlab': ['%%', '%', ''],
+    'vb': ['\'\'\'', '\'', ''],
 };
 
-export function AddAnnotations(file_path: string, file_name: string, languageId: string) {
+export const activate_language = Object.keys(commentFormats);
+
+export async function AddAnnotations(file_path: string, file_name: string, languageId: string) {
     const annotations = GenerateAnnotations(file_name, languageId);
+    const timeout_ms = languageId === 'java' ? 500 : 10;
     try {
-        fs.appendFileSync(file_path, annotations);
+        await new Promise(resolve => setTimeout(resolve, timeout_ms));
+        const originalContent = await readFile(file_path, 'utf8');
+        const newContent = annotations + originalContent;
+        await writeFile(file_path, newContent, 'utf8');
     } catch (error) {
         console.log(error);
     }

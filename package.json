@@ -2,7 +2,7 @@
   "name": "file-header-annotations",
   "displayName": "文件头部注释",
   "description": "给代码文件开头自动添加注释",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "https://github.com/CloudSwordSage/file-header-annotations",
   "engines": {
     "vscode": ">=1.90.0"
@@ -15,6 +15,10 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "commands": [{
+      "command": "fileheaderannotations.createFileHeader",
+      "title": "create file header"
+    }],
     "configuration": {
       "type": "object",
       "title": "File Header Annotations configuration",
@@ -44,22 +48,18 @@
           "default": "",
           "description": "作者名称"
         },
-        "FileHeaderAnnotations.enable.language": {
+        "FileHeaderAnnotations.disenable.language": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "c", "cpp", "java", "javascript", "typescript", "css", "kotlin", "python", "ruby", "php", "swift", "go", "rust", "objective-c", "scala", "shellscript", "perl", "lua", "haskell", "r", "matlab", "vb"
+            ],
+            "description": "文件类型"
           },
-          "default": [
-            "c",
-            "cpp",
-            "java",
-            "python",
-            "javascript",
-            "typescript",
-            "kotlin",
-            "css"
-          ],
-          "description": "需要添加注释的文件类型"
+          "uniqueItems": true,
+          "default": [],
+          "description": "禁用文件类型注释"
         }
       }
     }
