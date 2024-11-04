@@ -2,8 +2,22 @@
 
 对 “file-header-annotations” 扩展名的所有重要更改都将记录在此文件中。
 
-## [Unreleased]
+<!-- ## [released]
 
 - 初始版本 On 2024-10-29
 - v0.0.1 On 2024-10-30，添加了功能
-- v0.0.2 On 2024-11-04，添加了语言支持，添加 `create file header` 命令来创建文件头
+- v0.0.2 On 2024-11-04，添加了语言支持，添加 `create file header` 命令来创建文件头 -->
+
+## [released]
+
+### v0.0.1
+
+添加了功能
+
+### v0.0.2
+
+添加了语言支持，添加 `create file header` 命令来创建文件头
+
+### v0.0.3
+
+添加插件元数据，并修改关键词

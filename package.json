@@ -1,9 +1,16 @@
 {
   "name": "file-header-annotations",
-  "displayName": "文件头部注释",
+  "displayName": "文件头注释",
   "description": "给代码文件开头自动添加注释",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://github.com/CloudSwordSage/file-header-annotations",
+  "author": {
+    "name": "CloudSwordSage",
+    "email": "zlf100518@163.com",
+    "url": "https://github.com/CloudSwordSage"
+  },
+  "license": "MIT",
+  "publisher": "CloudSwordSage",
   "engines": {
     "vscode": ">=1.90.0"
   },
@@ -16,39 +23,39 @@
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [{
-      "command": "fileheaderannotations.createFileHeader",
+      "command": "file-header-annotations.createFileHeader",
       "title": "create file header"
     }],
     "configuration": {
       "type": "object",
       "title": "File Header Annotations configuration",
       "properties": {
-        "FileHeaderAnnotations.enable.time": {
+        "file-header-annotations.enable.time": {
           "type": "boolean",
           "default": true,
           "description": "是否在文件头部添加时间注释"
         },
-        "FileHeaderAnnotations.enable.author": {
+        "file-header-annotations.enable.author": {
           "type": "boolean",
           "default": true,
           "description": "是否在文件头部添加作者注释"
         },
-        "FileHeaderAnnotations.enable.file": {
+        "file-header-annotations.enable.file": {
           "type": "boolean",
           "default": true,
           "description": "是否在文件头部添加文件名注释"
         },
-        "FileHeaderAnnotations.enable.description": {
+        "file-header-annotations.enable.description": {
           "type": "boolean",
           "default": true,
           "description": "是否在文件头部添加描述注释"
         },
-        "FileHeaderAnnotations.author": {
+        "file-header-annotations.author": {
           "type": "string",
           "default": "",
           "description": "作者名称"
         },
-        "FileHeaderAnnotations.disenable.language": {
+        "file-header-annotations.disenable.language": {
           "type": "array",
           "items": {
             "type": "string",

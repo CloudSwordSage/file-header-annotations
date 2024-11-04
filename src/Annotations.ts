@@ -43,7 +43,7 @@ export async function AddAnnotations(file_path: string, file_name: string, langu
     }
 }
 function GenerateAnnotations(file_name: string, languageId: string) {
-    const config = vscode.workspace.getConfiguration('FileHeaderAnnotations');
+    const config = vscode.workspace.getConfiguration('file-header-annotations');
     const enable_time = config.get<boolean>('enable.time');
     const enable_author = config.get<boolean>('enable.author');
     const enable_file = config.get<boolean>('enable.file');

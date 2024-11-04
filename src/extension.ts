@@ -7,7 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const fileWatcher = vscode.workspace.createFileSystemWatcher('**/*');
 	fileWatcher.onDidCreate(async uri => {
 		try {
-			const config = vscode.workspace.getConfiguration('FileHeaderAnnotations');
+			const config = vscode.workspace.getConfiguration('file-header-annotations');
 			const disenable_language = config.get<string[]>('disenable.language');
 			const document = await vscode.workspace.openTextDocument(uri);
 			const filePath = uri.fsPath;
@@ -24,8 +24,8 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	let disposable = vscode.commands.registerCommand('fileheaderannotations.createFileHeader', async () => {
-		const config = vscode.workspace.getConfiguration('FileHeaderAnnotations');
+	let disposable = vscode.commands.registerCommand('file-header-annotations.createFileHeader', async () => {
+		const config = vscode.workspace.getConfiguration('file-header-annotations');
 		const disenable_language = config.get<string[]>('disenable.language');
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) {
