@@ -35,4 +35,8 @@ Author: CloudSwordSage
 
 添加插件元数据，并修改关键词
 
+### v0.0.4
+
+bug 修复，具体见 [CHANGELOG.mg](./CHANGELOG.md)
+
 **Done!**
