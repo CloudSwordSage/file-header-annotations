@@ -1,3 +1,10 @@
+/*
+* @Time    : 2024/11/11 19:24:48
+* @Author  : 墨烟行(GitHub UserName: CloudSwordSage)
+* @File    : extension.ts
+* @Desc    : 注册命令及文件创建监听
+*/
+
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -54,6 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
 			console.error('Failed to open document:', error);
 		}
 	});
+	
 	let disposableCommand = vscode.commands.registerCommand('file-header-annotations.createFileHeader', async () => {
 		const config = vscode.workspace.getConfiguration('file-header-annotations');
 		const disenable_language = config.get<string[]>('disenable.language');
@@ -78,7 +86,6 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 	context.subscriptions.push(disposableCommand);
-	// context.subscriptions.push(fileWatcher);
 	context.subscriptions.push(disposableFileWatcher);
 }
 

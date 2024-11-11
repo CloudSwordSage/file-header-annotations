@@ -1,3 +1,10 @@
+/*
+* @Time    : 2024/11/11 19:25:29
+* @Author  : 墨烟行(GitHub UserName: CloudSwordSage)
+* @File    : Annotations.ts
+* @Desc    : 实现注释添加功能
+*/
+
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { promisify } from 'util';
