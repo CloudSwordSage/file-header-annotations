@@ -1,7 +1,8 @@
 /*
-* @Time    : 2024/11/11 19:24:48
+* @Time    : 2025/8/22 15:21:13
 * @Author  : 墨烟行(GitHub UserName: CloudSwordSage)
 * @File    : extension.ts
+* @License : MIT
 * @Desc    : 注册命令及文件创建监听
 */
 
@@ -61,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
 			console.error('Failed to open document:', error);
 		}
 	});
-	
+
 	let disposableCommand = vscode.commands.registerCommand('file-header-annotations.createFileHeader', async () => {
 		const config = vscode.workspace.getConfiguration('file-header-annotations');
 		const disenable_language = config.get<string[]>('disenable.language');
